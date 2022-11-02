@@ -3,6 +3,8 @@
 ## Prerequisites
 - Install VirtualBox
 -  Install Vagrant
+- `git clone https://github.com/mrbilalshafiq/k8sclusterkubeadm.git && cd k8sclusterkubeadm`
+
 
 ## Spin up VMs 
 
