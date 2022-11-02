@@ -1,4 +1,4 @@
-# k8sclusterkubeadm
+# Deploying a 3-Node Kubernetes Cluster using kubeadm
 
 ## Prerequisites
 - Install VirtualBox
