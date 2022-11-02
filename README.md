@@ -8,7 +8,7 @@
 
 ## Spin up VMs 
 
-1. Go the folder containing the Vagrantfile and run:
+1. To see the VMs that will be spun up, run:
 ` vagrant status`
 
 2. When you can see the VM's it intends to create, run:
