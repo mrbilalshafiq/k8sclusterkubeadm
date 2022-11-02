@@ -37,7 +37,7 @@ sudo modprobe overlay
 sudo modprobe br_netfilter
 ```
 
-7. sysctl params required by setup, params persist across reboots
+7. sysctl params required by setup, params persist across reboots: 
 ```
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-iptables  = 1
@@ -46,7 +46,7 @@ net.ipv4.ip_forward                 = 1
 EOF
 ```
 
-8. Apply sysctl params without reboot
+8. Apply sysctl params without reboot: 
 `sudo sysctl --system`
 
 ## INSTALL DOCKER 
@@ -122,7 +122,7 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
-24. Start the cluster on the master node
+24. Start the cluster on the master node: 
 `kubeadm init --pod-network-cidr 10.244.0.0/16 --apiserver-advertise-address=192.168.56.2`
 
 25. If having issues then comment out disabled_plugins = ["cri"] in /etc/containerd/config.toml:
@@ -138,17 +138,18 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-27. Verify the cluster
+27. Verify the cluster: 
 `kubectl get nodes`
 
 28. You must deploy a Container Network Interface (CNI) based Pod network add-on so that your Pods can communicate with each other.
 > Weave Net can be installed onto your CNI-enabled Kubernetes cluster with a single command:
 `kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml`
-29. Join the nodes
+
+29. Join the nodes: 
 ```
 kubeadm join 192.168.56.2:6443 --token xy1ftf.e6p1zgyvv8pg84ky \
         --discovery-token-ca-cert-hash sha256:0cec514854af79291486c0cb017f3e0b7974a7136fb327f10aa8f346df6956f5
 ```
 
-30. See the nodes
+30. See the nodes: 
 `kubectl get nodes`
